@@ -1,4 +1,6 @@
 <?php
+if($_GET['format']=='json'){header('content-type: text/javascript');}
+
 $out = '';
 if(isset($_GET['height']) || isset($height)){
   $tmp = isset($height) ? $height : $_GET['height'];
@@ -10,7 +12,7 @@ if(isset($_GET['height']) || isset($height)){
 
 if(isset($_GET['values']) || isset($values)){
   $tmp = isset($values) ? $values : $_GET['values'];
-  if(preg_match("/^([0-9]*\.?[0-9]+,?)*$/",$tmp)){
+  if(preg_match("/^([0-9]*\.?[0-9]+,)*([0-9]*\.?[0-9]+)$/",$tmp)){
     $values = split(',',$tmp); 
   } 
 } else {
